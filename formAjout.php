@@ -35,7 +35,7 @@
         <!-- Section pour Insérer un livre -->
         <section id="inserer" class="mt-5">
             <h2>Insérer un livre</h2>
-            <form action="inserer_livre.php" method="post">
+            <form action="ajoutLivres.php" method="post">
                 <div class="mb-3">
                     <label for="titre" class="form-label">Titre</label>
                     <input type="text" class="form-control" id="titre" name="titre" required>
