@@ -8,10 +8,14 @@ $result = $db->query($sql);
 
 <head>
     <title>Gestion de Bibliothèque</title>
-    <!-- Lien vers le CSS de Bootstrap -->
+    <!-- Lien vers les fichiers CSS et JS de Bootstrap et DataTables -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Lien vers le JS de Bootstrap -->
+    <link href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap5.min.css" rel="stylesheet">
+    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"></script>
 </head>
 <body>
 <div class="container mt-5">
@@ -38,35 +42,48 @@ $result = $db->query($sql);
             </div>
         </nav>
 
-    <div class="container mt-5">
-        <h2>Modifier un Livre</h2>
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th>Titre</th>
-                    <th>Auteur</th>
-                    <th>Genre</th>
-                    <th>Année</th>
-                    <th>Statut</th>
-                    <th>Action</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php while ($row = $result->fetch(PDO::FETCH_ASSOC)) { ?>
-                <tr>
-                    <td><?php echo htmlspecialchars($row['titre']); ?></td>
-                    <td><?php echo htmlspecialchars($row['auteur']); ?></td>
-                    <td><?php echo htmlspecialchars($row['genre']); ?></td>
-                    <td><?php echo htmlspecialchars($row['annee']); ?></td>
-                    <td><?php echo htmlspecialchars($row['statut']); ?></td>
-                    <td>
-                        <!-- Lien vers modifAdmin.php avec l'ID du livre -->
-                        <a href="modifAdmin.php?id=<?php echo $row['id']; ?>" class="btn btn-warning">Modifier</a>
-                    </td>
-                </tr>
-                <?php } ?>
-            </tbody>
-        </table>
+        <div class="container mt-5">
+            <h2>Modifier un Livre</h2>
+            <!-- Tableau des livres -->
+            <table id="tableLivres" class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Titre</th>
+                        <th>Auteur</th>
+                        <th>Genre</th>
+                        <th>Année</th>
+                        <th>Statut</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php while ($row = $result->fetch(PDO::FETCH_ASSOC)) { ?>
+                    <tr>
+                        <td><?php echo htmlspecialchars($row['titre']); ?></td>
+                        <td><?php echo htmlspecialchars($row['auteur']); ?></td>
+                        <td><?php echo htmlspecialchars($row['genre']); ?></td>
+                        <td><?php echo htmlspecialchars($row['annee']); ?></td>
+                        <td><?php echo htmlspecialchars($row['statut']); ?></td>
+                        <td>
+                            <!-- Lien vers modifAdmin.php avec l'ID du livre -->
+                            <a href="modifAdmin.php?id=<?php echo $row['id']; ?>" class="btn btn-warning">Modifier</a>
+                        </td>
+                    </tr>
+                    <?php } ?>
+                </tbody>
+            </table>
+        </div>
     </div>
+
+    <!-- Initialisation de DataTables avec la langue en français -->
+    <script>
+        $(document).ready(function() {
+            $('#tableLivres').DataTable({
+                "language": {
+                    "url": "//cdn.datatables.net/plug-ins/1.13.4/i18n/fr-FR.json"
+                }
+            });
+        });
+    </script>
 </body>
 </html>

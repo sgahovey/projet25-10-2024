@@ -1,15 +1,23 @@
 <?php
-require "bd.php";
+include "bd.php";
+$sql = "SELECT * FROM Livres"; 
+$result = $db->query($sql); 
+
 ?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <title>Gestion de Bibliothèque</title>
-    <!-- Lien vers le CSS de Bootstrap -->
+    <!-- Lien vers les fichiers CSS et JS de Bootstrap et DataTables -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Lien vers le JS de Bootstrap -->
+    <link href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap5.min.css" rel="stylesheet">
+    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"></script>
 </head>
+
 <body>
     <div class="container mt-5">
         <h1 class="text-center">Administration de la Bibliothèque</h1>
@@ -35,41 +43,40 @@ require "bd.php";
             </div>
         </nav>
 
-    <div
-        class="table-responsive"
-    >
-        <table
-            class="table table-primary"
-        >
-            <thead>
-                <tr>
-                    <th scope="col">Titre</th>
-                    <th scope="col">Auteur</th>
-                    <th scope="col">Genre</th>
-                    <th scope="col">Année</th>
-                    <th scope="col">Statut</th>
+    <div class="container mt-5">
+            <h2>Liste des Livres</h2>
 
-                </tr>
-            </thead>
-            <tbody>
-<?php
-$sql = "SELECT * FROM Livres";
-  $result = $db->query($sql);
-
-        while ($row = $result->fetch()) {
-            echo "<tr>";
-            echo "<td scope='row'>" . htmlspecialchars($row['titre']) . "</td>";
-            echo "<td>" . htmlspecialchars($row['auteur']) . "</td>";
-            echo "<td>" . htmlspecialchars($row['genre']) . "</td>";
-            echo "<td>" . htmlspecialchars($row['annee']) . "</td>";
-            echo "<td>" . htmlspecialchars($row['statut']) . "</td>";
-            echo "</tr>";
-        }
-?>
-            </tbody>
-        </table>
+            <table id="tableLivres" class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Titre</th>
+                        <th>Auteur</th>
+                        <th>Genre</th>
+                        <th>Année</th>
+                        <th>Statut</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php foreach ($result as $row) { ?>
+                    <tr>
+                        <td><?php echo htmlspecialchars($row['titre']); ?></td>
+                        <td><?php echo htmlspecialchars($row['auteur']); ?></td>
+                        <td><?php echo htmlspecialchars($row['genre']); ?></td>
+                        <td><?php echo htmlspecialchars($row['annee']); ?></td>
+                        <td><?php echo htmlspecialchars($row['statut']); ?></td>
+                    </tr>
+                    <?php } ?>
+                </tbody>
+            </table>
+        </div>
     </div>
-    
 
-</body>
-</html>
+    <script>
+        $(document).ready(function() {
+            $('#tableLivres').DataTable({
+                "language": {
+                    "url": "//cdn.datatables.net/plug-ins/1.13.4/i18n/fr-FR.json"
+                }
+            });
+        });
+    </script>
