@@ -39,7 +39,7 @@ $result = $db->query($sql);
         </nav>
 
     <div class="container mt-5">
-        <h2>Liste des Livres</h2>
+        <h2>Modifier un Livre</h2>
         <table class="table table-striped">
             <thead>
                 <tr>

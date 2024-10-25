@@ -21,7 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if ($stmt->execute()) {
         echo "<script>alert('Livre ajouté avec succès !');
-        window.location.href = 'index.php';</script>";
+        window.location.href = 'formAjout.php';</script>";
     } else {
         echo "<script>alert('Erreur lors de l\'ajout du livre');
         header('Location: formAjout.php');
