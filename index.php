@@ -22,7 +22,7 @@ require "bd.php";
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link active" href="formAjout.php">Insérer un livre</a>
+                            <a class="nav-link" href="formAjout.php">Insérer un livre</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="formModif.php">Modifier un livre</a>
