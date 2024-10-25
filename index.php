@@ -15,13 +15,14 @@ $result = $db->query($sql);
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"></script>*
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
     <div class="container mt-5">
         <h1 class="text-center">Administration de la Bibliothèque</h1>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light mt-4">
+        <nav class="navbar navbar-expand-lg" style="background-color: #4a90e2;">
             <div class="container-fluid">
                 <a class="navbar-brand" href="index.php">Accueil</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -72,11 +73,7 @@ $result = $db->query($sql);
     </div>
 
     <script>
-        $(document).ready(function() {
-            $('#tableLivres').DataTable({
-                "language": {
-                    "url": "//cdn.datatables.net/plug-ins/1.13.4/i18n/fr-FR.json"
-                }
-            });
-        });
+    $(document).ready(function() {
+    $('#tableLivres').DataTable();
+});
     </script>

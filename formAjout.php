@@ -4,13 +4,13 @@
     <title>Gestion de Bibliothèque</title>
     <!-- Lien vers le CSS de Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Lien vers le JS de Bootstrap -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+
 </head>
 <body>
     <div class="container mt-5">
         <h1 class="text-center">Administration de la Bibliothèque</h1>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light mt-4">
+        <nav class="navbar navbar-expand-lg" style="background-color: #4a90e2;">
             <div class="container-fluid">
                 <a class="navbar-brand" href="index.php">Accueil</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
